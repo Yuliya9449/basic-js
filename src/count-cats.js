@@ -25,12 +25,5 @@ module.exports = {
 //!-------------------------------------------------------------
 
 function countCats(matrix) {
-    const cat = '^^';
-    let n = 0;
-    matrix.flat().forEach(elem => {
-        if (elem === cat) {
-            n += 1;
-        }
-    })
-    return n;
-  }
+  return matrix.flat().filter((elem) => elem === '^^').length;
+}
