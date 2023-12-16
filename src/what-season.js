@@ -22,26 +22,16 @@ module.exports = {
  //!-------------------------
 
  function getSeason(date) {
-    if ([...arguments].length === 0) {
-        return 'Unable to determine the time of year!';
-    }
-    if (!(date instanceof Date) || Object.keys(date).length > 0 ) {
-        throw new Error('Invalid date!');
-    }
-    let season = {
-        spring: 'spring',
-        summer: 'summer',
-        autumn: 'autumn',
-        winter: 'winter',
-    }
-    let month = date.getMonth();
-    if (month === 2 || month === 3 || month === 4) {
-        return season.spring;
-    } else if (month === 5 || month === 6 || month === 7) {
-        return season.summer;
-    } else if (month === 8 || month === 9 || month === 10) {
-        return season.autumn;
-    } else {
-        return season.winter;
-    }
+  if (!date) {
+    return 'Unable to determine the time of year!';
   }
+  if (!(date instanceof Date) || Object.keys(date).length) {
+    throw new Error('Invalid date!');
+  }
+
+  const seasons = ['winter', 'spring', 'summer', 'autumn', 'winter'];
+
+  const month = date.getMonth();
+
+  return seasons[Math.floor((month + 1) / 3)];
+}
