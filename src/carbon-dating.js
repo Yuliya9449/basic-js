@@ -37,17 +37,19 @@ const HALF_LIFE_PERIOD = 5730;
 // округлить нужно в большую сторону
 
 function dateSample(sampleActivity) {
-    if ((typeof(sampleActivity) === "string") && (+sampleActivity == sampleActivity) &&
-    (+sampleActivity > 0) && (+sampleActivity <= MODERN_ACTIVITY)) {
-        sampleActivity = +sampleActivity
-        const k = Math.LN2 / HALF_LIFE_PERIOD;
-        let old = Math.ceil(Math.log(MODERN_ACTIVITY/sampleActivity)/k);
-        return old;
-    } else {
-        return false;
-    }
+  if (
+    (typeof (sampleActivity) === 'string')
+    && (+sampleActivity > 0)
+    && (+sampleActivity <= MODERN_ACTIVITY)
+  ) {
+    const numSampleActivity = +sampleActivity;
+    const k = Math.LN2 / HALF_LIFE_PERIOD;
+    const old = Math.ceil(Math.log(MODERN_ACTIVITY / numSampleActivity) / k);
+
+    return old;
   }
 
+  return false;
+}
 
-//   dateSample('6.555955979600091');
-
+// dateSample('6.555955979600091');
