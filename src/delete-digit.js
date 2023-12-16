@@ -23,16 +23,8 @@ module.exports = {
 //!-----------------------
 
 function deleteDigit(n) {
-    let res = [];
-    let arr = n.toString().split('');
-    arr.forEach((elem, i) => {
-        let copyArr = arr.slice();
-        delete copyArr[i];
-        res.push(copyArr);
-    });
-    res.forEach((el, i, ar) => {
-        ar[i] = (+el.join(''));
-    })
-    res = Math.max.apply(null, res);
-    return res;
+  const str = String(n);
+  const possibleResultsArr = Array.from({ length: str.length }, ((_, i) => str.replace(str[i], '')));
+
+  return (Math.max(...possibleResultsArr));
 }
