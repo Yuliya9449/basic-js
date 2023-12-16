@@ -34,33 +34,23 @@ module.exports = {
 //!---------------------
 
 function getDNSStats(domains) {
+  const dnsArr = domains.reduce((acc, domain) => {
+    acc.push(domain);
 
-    let res = {};
-    let myArr = domains.map(elem => {
-        elem = elem.split('.');
-        return elem;
-    })
-
-    myArr.forEach(elem => {
-        while (elem.length > 0) {
-            let key = `.${elem.pop()}`;
-            if(!res[key]) {
-                res[key] = 1;
-            } else {
-                res[key] += 1;
-            }
-            elem[elem.length - 1] += key;
-        }
-    });
-
-    for (let key in res) {
-        let newKey = (key.split('.').reverse());
-        newKey.pop();
-        if(newKey.length > 1) {
-            newKey = `.${newKey.join('.')}`;
-            res[newKey] = res[key];
-            delete res[key];
-        }
+    while (domain.includes('.')) {
+      domain = domain.slice(domain.indexOf('.') + 1);
+      acc.push(domain);
     }
-    return res;
+
+    return acc;
+  }, []);
+
+  const dnsReversArr = dnsArr.map((elem) => elem.split('.').reverse().map((el) => `.${el}`).join(''));
+
+  const res = dnsReversArr.reduce((acc, elem) => {
+    acc[elem] = elem in acc ? acc[elem] += 1 : acc[elem] = 1;
+    return acc;
+  }, {});
+
+  return res;
 }
