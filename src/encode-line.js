@@ -22,26 +22,22 @@ module.exports = {
 //!----------------------
 
 function encodeLine(str) {
+  const arr = str.split('')
+    .reduce((acc, elem, idx) => {
+      if (idx === 0) {
+        acc.push(Array.from(elem));
+      }
 
-    const arr = [[1, str[0]]];
-    let j = 0;  // counter index for arr
+      if (idx > 0) {
+        elem === acc[acc.length - 1][0]
+          ? acc[acc.length - 1].push(elem)
+          : acc.push(Array.from(elem));
+      }
 
-    for (let i = 1; i < str.length; i += 1) {
-	    if (str[i] !== arr[j][1]) {
-	    	j += 1;
-	    	arr[j] = [1, str[i]];
-	    } else {
-	    	arr[j][0] += 1;
-	    }
-    }
-    arr.forEach(elem => {
-        if (elem[0] == 1) {
-            elem.shift();
-        }
-    })
-    arr.forEach((elem, i, arr) => {
-        arr[i] = (elem.join(''));
-    })
-    let res = arr.join('')
-    return res;
+      return acc;
+    }, []);
+
+  return arr.map((nestedArr) => `${nestedArr.length}${nestedArr[0]}`)
+    .join('')
+    .replaceAll('1', '');
 }
