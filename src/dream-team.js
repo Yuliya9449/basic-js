@@ -24,16 +24,12 @@ module.exports = {
 //!==========================
 
 function createDreamTeam(members) {
-    if (Array.isArray(members)) {
-        let secretName = [];
-    members.forEach(elem => {
-        if (typeof elem === "string") {
-            secretName.push((elem.trimStart()[0].toUpperCase()));
-        }
-    });
-    secretName = secretName.sort().join('');
-    return secretName;
-    } else {
-        return false
-    }
+  if (!Array.isArray(members)) {
+    return false;
   }
+
+  return members.filter((member) => typeof member === 'string')
+    .map((member) => member.trim().toUpperCase().at())
+    .sort()
+    .join('');
+}
