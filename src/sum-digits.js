@@ -22,16 +22,8 @@ module.exports = {
 };
 
 //!-----------------------
-// let n = 184;
 
 function getSumOfDigits(n) {
-    // let res = 0;
-    while (n >= 10) {
-        n = n.toString().split('').reduce((sum, current) => {
-            return sum + +current;
-        }, 0);
-    }
-    return n;
+  const sum = n.toString(10).split('').reduce((acc, digit) => acc + +digit, 0);
+  return sum <= 9 ? sum : getSumOfDigits(sum);
 }
-
-// getSumOfDigits(n)
