@@ -23,16 +23,13 @@ module.exports = {
 //!-------------------------
 
 function getCommonCharacterCount(s1, s2) {
-    let arr1 = s1.split('');
-    let arr2 = s2.split('');
-    let res = 0;
+  let s2Remaining = s2;
 
-    arr1.forEach(element => {
-        let i = arr2.indexOf(element)
-        if (i >= 0) {
-            res += 1;
-            arr2.splice(i, 1);
-        }
-    });
-    return res;
+  for (const char of s1) {
+    if (s2Remaining.includes(char)) {
+      s2Remaining = s2Remaining.replace(char, '');
+    }
+  }
+
+  return s2.length - s2Remaining.length;
 }

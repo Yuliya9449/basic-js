@@ -5,11 +5,11 @@
 ---
 
 #### Prerequisites
-1. Install [Node.js](https://nodejs.org/en/download/)   
+1. Install [Node.js](https://nodejs.org/en/download/)
 2. Fork this repository: https://github.com/AlreadyBored/basic-js
-3. Clone your newly created repo: https://github.com/<%your_github_username%>/basic-js/  
-4. Go to folder `basic-js`  
-5. To install all dependencies use [`npm install`](https://docs.npmjs.com/cli/install)  
+3. Clone your newly created repo: https://github.com/<%your_github_username%>/basic-js/
+4. Go to folder `basic-js`
+5. To install all dependencies use [`npm install`](https://docs.npmjs.com/cli/install)
 6. Run `npm run test` in command line.
 7. You will see the number of pending, passing and failing tests. 100% of passing tests is equal to max score for the task
 
@@ -41,7 +41,7 @@ Your task is to write several functions that are the solution to the subtasks. S
 
 ### **Count cats!**
 
-![Count cats!](https://vg5b2ejdwb-flywheel.netdna-ssl.com/wp-content/uploads/2019/11/cats-in-boxes-03.jpg)  
+![Count cats!](https://vg5b2ejdwb-flywheel.netdna-ssl.com/wp-content/uploads/2019/11/cats-in-boxes-03.jpg)
 Your task is to count the cats hidden in the backyard (presented by two-dimensional `Array`). Cats hide well, but their **ears** (`"^^"`) are clearly visible. Your task is to implement the `countCats(backyard)` function that will count cats. Good luck!
 
 Number of cats found should be `number`. If no cats found, function should return `0`.
@@ -60,7 +60,7 @@ Write your code in `src/count-cats.js`.
 
 ### **Carbon dating**
 
-![Carbon dating](https://earthhow.com/wp-content/uploads/2018/12/Carbon-Dating-678x378.png)  
+![Carbon dating](https://earthhow.com/wp-content/uploads/2018/12/Carbon-Dating-678x378.png)
 To determine the age of archaeological finds, **radioisotope dating** is widely used. One of its types is **radiocarbon dating**.
 
 The approximate age of the sample is calculated by measuring the **ratio** of the **modern** activity of the C14 isotope to the activity of the same isotope in the **sample**.
@@ -95,7 +95,7 @@ Write your code in `src/carbon-dating.js`.
 
 ### **Dream team**
 
-![Dream team](https://i0.wp.com/www.comicsbeat.com/wp-content/uploads/2021/05/power-rangers.jpg?fit=1420,945&ssl=1)  
+![Dream team](https://i0.wp.com/www.comicsbeat.com/wp-content/uploads/2021/05/power-rangers.jpg?fit=1420,945&ssl=1)
 Imagine you and your friends decide to create a **dream team**. This team should have a cool secret name that contains encrypted information about it. For example, these may be the **first letters** of the names of its members in **upper case** **sorted alphabetically**.
 Your task is to implement the `createDreamTeam(members)` function that returns name of a newly made team (`string`) based on the names of its members (`Array`). Good luck!
 
@@ -115,7 +115,7 @@ Write your code in `src/dream-team.js`.
 
 ### **What season?**
 
-![What season](https://images.twinkl.co.uk/tw1n/image/private/t_630_eco/image_repo/83/d2/T-T-224-four-seasons-posters-a4_ver_2.avif)  
+![What season](https://images.twinkl.co.uk/tw1n/image/private/t_630_eco/image_repo/83/d2/T-T-224-four-seasons-posters-a4_ver_2.avif)
 Your task is to implement the function `getSeason(date)` that accepts `Date` object and returns the time of the year that matches it.
 Time of the year must be `string`.
 
@@ -133,7 +133,7 @@ If the `date` argument was not passed, the function must return the `string` `'U
 
 Shh! An enemy scout has lurked among the arguments that come into this function.
 
-![Disguised](https://www.famousbirthdays.com/faces/disguised-toast-image.jpg)  
+![Disguised](https://www.famousbirthdays.com/faces/disguised-toast-image.jpg)
 He is guided by the famous proverb: “If it looks like a **duck**, swims like a **duck** and quacks like a **duck**, then it probably is a **duck** (who cares what it **really** is)”. He is **expertly disguised** as a real date, but a clever javascript developer can catch him and `throw` an `Error` with message `Invalid date!` just in time!
 
 For example:
@@ -148,7 +148,7 @@ Write your code in `src/what-season.js`.
 
 ### **Tower of Hanoi**
 
-![Tower of hanoi visualisation](https://ioecapsule.com/wp-content/uploads/2019/08/tower_of_hanoi_3_disks.gif)  
+![Tower of hanoi visualisation](https://ioecapsule.com/wp-content/uploads/2019/08/tower_of_hanoi_3_disks.gif)
 [Tower of Hanoi](https://www.britannica.com/topic/Tower-of-Hanoi) is famous mathematical puzzle of the 18th century.
 It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
 
@@ -178,7 +178,7 @@ Write your code in `src/hanoi-tower.js`.
 
 ### **Transform array**
 
-![Transform array](https://www.capturehighered.com/wp-content/uploads/2019/02/The-Call-720x332.jpg)  
+![Transform array](https://www.capturehighered.com/wp-content/uploads/2019/02/The-Call-720x332.jpg)
 Your task is to implement the function `transform(arr)` that takes an `array` and returns **transformed** array, based on the **control sequences** that `arr` contains.
 **Control sequences** are defined `string` elements of the mentioned `array`:
 * `--discard-next` excludes the next element of the array from the transformed array.
@@ -200,7 +200,7 @@ Write your code in `src/transform-array.js`.
 
 ### **Chain maker**
 
-![Chaining](https://www.sdxcentral.com/cdn-cgi/image/w=748,h=374,fit=scale-down,f=auto,q=30/https://www.sdxcentral.com/wp-content/uploads/2018/08/Why-Problems-With-Service-Chaining-Are-Stalling-NFV.jpg)  
+![Chaining](https://www.sdxcentral.com/cdn-cgi/image/w=748,h=374,fit=scale-down,f=auto,q=30/https://www.sdxcentral.com/wp-content/uploads/2018/08/Why-Problems-With-Service-Chaining-Are-Stalling-NFV.jpg)
 Let's practice in [chaining](https://en.wikipedia.org/wiki/Method_chaining)!
 
 Your task is to create the object `chainMaker` that creates chains. The finished chain is a `string` and looks like this: `'( value1 )~~( value2 )~~( value3 )'`.
@@ -227,7 +227,7 @@ Write your code in `src/simple-chain.js`.
 
 ### **Recursive depth calculator**
 
-![Go deeper](https://i.imgur.com/k7lADiM.jpg)  
+![Go deeper](https://i.imgur.com/k7lADiM.jpg)
 Your task is to implement the class `DepthCalculator` with method `calculateDepth` that takes an `array` and returns its depth.
 
 `calculateDepth` method must pass the given array **recursively**. Depth of a **flat** array is 1. Method must correctly work with `arrays` that contain no elements or contain empty `arrays`.
@@ -247,7 +247,7 @@ Write your code in `src/recursive-depth.js`.
 ---
 ### **Extended repeater**
 
-![Extended repater](https://upload.wikimedia.org/wikipedia/commons/4/4b/Macaws_at_Jurong_Bird_Park_-Singapore-8.jpg)  
+![Extended repater](https://upload.wikimedia.org/wikipedia/commons/4/4b/Macaws_at_Jurong_Bird_Park_-Singapore-8.jpg)
 Your task is to implement the function `repeater(str, options)`.
 This function returns a repeating `string` based on the given parameters:
 * `str` is a `string` to repeat;
@@ -260,7 +260,7 @@ This function returns a repeating `string` based on the given parameters:
 
 The `str` and `addition` parameters are `strings` by default. In case when **type** of these parameters is different, they must be converted to a `string`.
 
-`separator` and `additionSeparator` parameters are `strings`. 
+`separator` and `additionSeparator` parameters are `strings`.
 
 `repeatTimes` and `additionRepeatTimes` are integer `numbers` (in the absence of any of them, the corresponding string is not repeated).
 
@@ -274,13 +274,13 @@ Write your code in `src/extended-repeater.js`.
 
 ### **Vigenere cipher**
 
-![Ciphering machine](https://live.staticflickr.com/1931/44960892745_471bee66bb_b.jpg)  
+![Ciphering machine](https://live.staticflickr.com/1931/44960892745_471bee66bb_b.jpg)
 Cryptography is awesome! Let's try to organize production of encryption machines. Our machines will use one of the encryption methods that are easy to understand, but also not amenable to simple cryptanalysis - the [**Vigenere cipher**](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
 
 Our machine will have 2 modifications: **direct** and **reverse** (the type of machine is determined at the moment of creation). The **direct** machine simply encodes and decodes the string that was transmitted to it, and the **reverse** machine returns an **inverted** string after encoding and decoding.
 
 Your task is to implement the class `VigenereCipheringMachine`. `constructor` of this `class` accepts `true` (**or nothing**) to create **direct** machine and `false` to create **reverse** machine.
-Each instance of `VigenereCipheringMachine` must have 2 methods: `encrypt` and `decrypt`. 
+Each instance of `VigenereCipheringMachine` must have 2 methods: `encrypt` and `decrypt`.
 
 `encrypt` method accepts 2 parameters: `message` (`string` to encode) and `key` (`string`-keyword).
 
@@ -365,7 +365,7 @@ Write your code in `src/file-names.js`.
 ---
 
 ### **(ST) Get email domain**
-Your task is to implement function that accepts email address (`email`) and returns it's **domain**.  
+Your task is to implement function that accepts email address (`email`) and returns it's **domain**.
 
 For example:
 
@@ -377,7 +377,7 @@ Write your code in `src/get-email-domain.js`.
 
 ### **(ST) Is MAC-48 Address?**
 The **MAC-48 address** is six groups of two hexadecimal digits (0 to 9 or A to F) separated by hyphens.
-Your task is to implement function that accepts **string** (`inputString`) and returns `true` if **string** is valid **MAC-48 address**.  
+Your task is to implement function that accepts **string** (`inputString`) and returns `true` if **string** is valid **MAC-48 address**.
 
 For example:
 
@@ -442,21 +442,21 @@ Write your code in `src/sort-by-height.js`.
 ---
 
 ### **(ST) Sum digits**
-Your task is to implement function that accepts a **number** (`n`) and returns the **sum of its digits** until we get to a **one digit number**.  
+Your task is to implement function that accepts a **number** (`n`) and returns the **sum of its digits** until we get to a **one digit number**.
 
 For example:
 
-For 100, the result should be 1 (1 + 0 + 0 = 1)  
+For 100, the result should be 1 (1 + 0 + 0 = 1)
 `getSumOfDigits(100)` => `1`
 
-For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)  
+For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
 `getSumOfDigits(91)` => `1`
 
 Write your code in `src/sum-digits.js`.
 
 ---
 
-© [AlreadyBored](https://github.com/alreadybored)  
+© [AlreadyBored](https://github.com/alreadybored)
 
 & tasks:
 * Common character count
