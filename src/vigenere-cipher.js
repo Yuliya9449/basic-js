@@ -34,126 +34,97 @@ const { NotImplementedError } = require('../extensions/index.js');
 //   VigenereCipheringMachine
 // };
 
- //!------------------
+//!------------------
 
-//A-65, B-66, ... Z-90
+class VigenereCipheringMachine {
+  constructor(direct = true) {
+    this.direct = direct;
+    this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    this.message = null;
+    this.key = null;
+  }
 
- class VigenereCipheringMachine {
-    constructor(direct = true) {
-        this.direct = direct;
-    }
-    //делаем заглавные буквы и выравниваем длину сообщения и ключа
-    toUpperCaseAndAlignLength(message, key) {
-        let normMess = message;
-        let normKey = key;
-        while(normKey.length < normMess.length) {
-            normKey += key;
-        }
-        normKey = normKey.slice(0, normMess.length).toUpperCase();
-        normMess = normMess.toUpperCase();
-        //! ура я победила деструктуризацию
-        return ([normMess, normKey]);
-    }
-    // метод для шифрования
-    encrypt(message, key) {
-        if ([...arguments].length < 2 || typeof(message) == 'undefined' || typeof(key) == 'undefined') {
-            throw new Error('Incorrect arguments!')
-        }
-        let res = '';
-
-        let [normMess, normKey] = this.toUpperCaseAndAlignLength(message, key);
-        //! теперь у меня есть normMess и normKey
-        // console.log([normMess, normKey]);
-        // console.log(normMess);//'ATTACK AT DAWN!'
-        // console.log(normKey);//'ALPHONSEALPHONS'
-
-        //! вывожу формулу
-        //26 - т.к. 26 букв
-    // let letter = String.fromCharCode(((normMess.charCodeAt(1) - 65) + (normKey.charCodeAt(1) - 65)) % 26 + 65);
-        // console.log(letter);
-
-        //! i- индекс для normMess, j - индекс для normKey
-        for (let i = 0, j = 0; i < normMess.length; i += 1) {
-            if(normMess.charCodeAt(i) >= 65 && normMess.charCodeAt(i) <=90) {
-                let letter = String.fromCharCode(((normMess.charCodeAt(i) - 65) + (normKey.charCodeAt(j) - 65)) % 26 + 65);
-                res += letter;
-                j += 1;
-            } else {
-                res += normMess[i];
-            }
-        }
-        // если в direct передали false, то переворачиваем res
-        if (!this.direct) {
-            res = res.split('').reverse().join('');
-        }
-        console.log(res);
-        return res;
-    }
-
-
-    // метод для расшифровки
-    decrypt(message, key) {
-        if ([...arguments].length < 2 || typeof(message) == 'undefined' || typeof(key) == 'undefined') {
-            throw new Error('Incorrect arguments!')
-        }
-        let res = '';
-        let [normMess, normKey] = this.toUpperCaseAndAlignLength(message, key);
-        // console.log(normMess);
-        // console.log(normKey);
-
-        //! вывожу формулу
-        //формулы получились разные, поэтому доп. if
-    // let letter = String.fromCharCode(((normMess.charCodeAt(4) - 65) - (normKey.charCodeAt(4) - 65)) % 26 + 65);
-    // console.log(normMess[4]);
-        // console.log(normKey[4]);
-        // console.log(letter);
-
-        for (let i = 0, j = 0; i < normMess.length; i += 1) {
-            if (normMess.charCodeAt(i) >= 65 && normMess.charCodeAt(i) <=90) {
-
-                if (normMess.charCodeAt(i) >= normKey.charCodeAt(j)) {
-                    let letter = String.fromCharCode(((normMess.charCodeAt(i) - 65) - (normKey.charCodeAt(j) - 65)) % 26 + 65);
-                    res += letter;
-                    j += 1;
-                } else if (normMess.charCodeAt(i) < normKey.charCodeAt(j)) {
-                    let letter = String.fromCharCode((26 - (Math.abs((normMess.charCodeAt(i) - 65) - (normKey.charCodeAt(j) - 65)))) % 26 + 65);
-                    res += letter;
-                    j += 1;
-                }
-
-            } else {
-                res += normMess[i];
-            }
-        }
-// если нужно перевернуть
-        if (!this.direct) {
-            res = res.split('').reverse().join('');
-        }
-
-        console.log(res);
-        return res;
+  checkArguments() {
+    if (!this.message || !this.key) {
+      throw new Error('Incorrect arguments!');
     }
   }
 
+  //делаем заглавные буквы и выравниваем длину сообщения и ключа
+  toUpperCaseAndAlignLength() {
+    this.message = this.message.toUpperCase();
+    this.key = this.key.padEnd(this.message.length, this.key).toUpperCase();
+  }
 
-//   const directMachine = new VigenereCipheringMachine();
+  // метод для шифрования
+  encrypt(message, key) {
+    this.message = message;
+    this.key = key;
 
-//   const reverseMachine = new VigenereCipheringMachine(false);
-//   directMachine.encrypt('attack at dawn!', 'alphonse');//   =>'AEIHQX SX DLLU!'
-// directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse');//=>'ATTACK AT DAWN!'
-// reverseMachine.encrypt('attack at dawn!', 'alphonse'); //=>'!ULLD XS XQHIEA'
-// reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse'); //=>'!NWAD TA KCATTA'
+    this.checkArguments();
 
-// directMachine.decrypt('aEiHQX sx DllU!', 'alphonse');
+    this.toUpperCaseAndAlignLength();
 
-// console.log(directMachine);
-//node src/vigenere-cipher.js
-//pm run test ./test/vigenere-cipher*
+    let res = '';
 
+    for (let i = 0, j = 0; i < this.message.length; i += 1) {
+      if (this.alphabet.includes(this.message[i])) {
+        const resultingIndex = (
+          this.alphabet.indexOf(this.message[i]) + this.alphabet.indexOf(this.key[j])
+        );
 
+        res += this.alphabet[resultingIndex];
+        j += 1;
+      }
 
+      if (!this.alphabet.includes(this.message[i])) {
+        res += this.message[i];
+      }
+    }
 
+    // если в direct передали false, то переворачиваем res
+    if (!this.direct) {
+      res = res.split('').reverse().join('');
+    }
+
+    return res;
+  }
+
+  // метод для расшифровки
+  decrypt(message, key) {
+    this.message = message;
+    this.key = key;
+
+    this.checkArguments();
+
+    this.toUpperCaseAndAlignLength();
+
+    let res = '';
+
+    for (let i = 0, j = 0; i < this.message.length; i += 1) {
+      if (this.alphabet.includes(this.message[i])) {
+        const resultingIndex = (
+          this.alphabet.lastIndexOf(this.message[i]) - this.alphabet.indexOf(this.key[j])
+        );
+
+        res += this.alphabet[resultingIndex];
+        j += 1;
+      }
+
+      if (!this.alphabet.includes(this.message[i])) {
+        res += this.message[i];
+      }
+    }
+
+    // если нужно перевернуть
+    if (!this.direct) {
+      res = res.split('').reverse().join('');
+    }
+
+    return res;
+  }
+}
 
 module.exports = {
-    VigenereCipheringMachine
-  };
+  VigenereCipheringMachine
+};
